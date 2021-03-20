@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/ListResponseModel';
 import { Product } from '../models/product';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class ProductService {
     return this.httpClient.get<ListResponseModel<Product>>(newPath);//gelen response response adı verdiğimiz nesne ile eşleşiyor
   }
 
+  add(product:Product):Observable<ResponseModel>{
+    //this.httpClient.post(api linki,apiye gönderilecek değer)
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"products/add",product);
+  }
 
 
 }
